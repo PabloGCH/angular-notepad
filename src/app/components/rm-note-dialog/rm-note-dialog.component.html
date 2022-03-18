@@ -1,0 +1,12 @@
+<div class="modal" [class.show-modal] = "returnShow()" #modal>
+    <div class ="modal-body">
+        <form>
+            <p>Desea eliminar la nota ?</p>
+            <fieldset>
+                <button (click)="close()">Cancel</button>
+                <button (click)="closeRm()">Delete</button>
+            </fieldset>
+        </form>
+    </div>
+    <div (click)="close()" class ="modal-background"></div>
+</div>

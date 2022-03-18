@@ -1,0 +1,4 @@
+<div id="notepad">
+    <app-sidebar (currentNote)="saveCurrentNote($event)"></app-sidebar>
+    <app-text-renderer [noteToRender]="currentNote"></app-text-renderer>
+</div>

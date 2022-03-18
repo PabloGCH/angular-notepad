@@ -1,0 +1,32 @@
+<div id="sidebar">
+    <app-add-note-dialog (newNoteData)="addNote($event)" #addDialog></app-add-note-dialog>
+    <app-rm-note-dialog (returnRm)="rmNote()" #rmDialog></app-rm-note-dialog>
+    <div id="date-box">
+        <label class="select-label" for="day">Day: </label>
+        <select id="day" class="select">
+            <option>...</option>
+            <option *ngFor="let i of days">{{i}}</option>
+        </select>
+        <label class="select-label" for="month">Month: </label>
+        <select id="month" class="select">
+            <option>...</option>
+            <option>10</option>
+            <option>2</option>
+        </select>
+        <label class="select-label" for="year">Year: </label>
+        <select id="year" class="select year">
+            <option>...</option>
+        </select>
+    </div>
+    <input id="search-bar" matInput #searchBarInput (input)="setSearchBarValue(searchBarInput)">
+    <div id="buttons-box">
+        <button (click)="addDialog.open()">+</button>
+        <button (click)="rmDialog.open()">-</button>
+    </div>
+
+    <div id="note-box">
+        <select multiple id="note-list">
+            <option *ngFor="let item of filteredNoteArray(); index as i" (click)="returnNote(numberOfNotes - 1 - i)">{{item.date}} {{item.title}}</option>
+        </select>
+    </div>
+</div>

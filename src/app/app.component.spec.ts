@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-notepad'`, () => {
+  it(`should have as title 'Notepad'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-notepad');
+    expect(app.title).toEqual('Notepad');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-notepad app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Notepad app is running!');
   });
 });
