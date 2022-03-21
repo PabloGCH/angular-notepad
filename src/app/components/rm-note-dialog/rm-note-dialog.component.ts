@@ -8,7 +8,7 @@ import { Note } from '../../interfaces/note';
 })
 export class RmNoteDialogComponent implements OnInit {
   @Output() returnRm = new EventEmitter<boolean>();
-  show = true;
+  show = false;
   constructor() {}
 
   returnShow() {

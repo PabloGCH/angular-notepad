@@ -8,10 +8,10 @@
                 <input id="content" type="text" #content>
             </fieldset>
             <fieldset>
-                <button (click)="close()">Cancel</button>
+                <button (click)="close(title, content)">Cancel</button>
                 <button (click)="closeAdd(title, content)">Add</button>
             </fieldset>
         </form>
     </div>
-    <div (click)="close()" class ="modal-background"></div>
+    <div (click)="close(title, content)" class ="modal-background"></div>
 </div>

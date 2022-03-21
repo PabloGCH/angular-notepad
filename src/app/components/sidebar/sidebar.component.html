@@ -3,22 +3,22 @@
     <app-rm-note-dialog (returnRm)="rmNote()" #rmDialog></app-rm-note-dialog>
     <div id="date-box">
         <label class="select-label" for="day">Day: </label>
-        <select id="day" class="select">
-            <option>...</option>
-            <option *ngFor="let i of days">{{i}}</option>
+        <select #selectDay id="day" class="select" (input)="this.setDayInput(selectDay)">
+            <option value="...">...</option>
+            <option *ngFor="let i of days" value="{{i}}">{{i}}</option>
         </select>
         <label class="select-label" for="month">Month: </label>
-        <select id="month" class="select">
-            <option>...</option>
-            <option>10</option>
-            <option>2</option>
+        <select #selectMonth id="month" class="select" (input)="this.setMonthInput(selectMonth)">
+            <option value="...">...</option>
+            <option *ngFor="let i of months" value="{{i}}">{{i}}</option>
         </select>
         <label class="select-label" for="year">Year: </label>
-        <select id="year" class="select year">
-            <option>...</option>
+        <select #selectYear id="year" class="select year" (input)="this.setYearInput(selectYear)">
+            <option value="...">...</option>
+            <option *ngFor="let i of years" value="{{i}}">{{i}}</option>
         </select>
     </div>
-    <input id="search-bar" matInput #searchBarInput (input)="setSearchBarValue(searchBarInput)">
+    <input id="search-bar" #searchBarInput (input)="setSearchBarValue(searchBarInput)">
     <div id="buttons-box">
         <button (click)="addDialog.open()">+</button>
         <button (click)="rmDialog.open()">-</button>

@@ -7,7 +7,7 @@
     justify-content: center;
     left: 0px;
     top: 0px;
-    background-color: white;
+    background-color: black;
 }
 
 /*Sidebar Menu*/
@@ -46,8 +46,6 @@
     padding: 0px;
     width: 80%;
     height: 80%;
-    background-color: lightgray;
-    overflow-y: scroll;
 }
 
 #note-list{

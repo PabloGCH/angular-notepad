@@ -20,12 +20,15 @@ export class AddNoteDialogComponent implements OnInit {
   closeAdd(title :HTMLInputElement, content :HTMLInputElement){
     var noteDate = new Date;
     var data :Note = {title: title.value, content: content.value, date: `${noteDate.getFullYear()}/${noteDate.getMonth()}/${noteDate.getDate()}-${noteDate.getHours()}:${noteDate.getMinutes()}:${noteDate.getSeconds()}`}
+    title.value = "";
+    content.value = "";
     this.show = false;
     this.newNoteData.emit(data);
   }
-  close() :boolean{
+  close(title :HTMLInputElement, content :HTMLInputElement) {
+    title.value = "";
+    content.value = "";
     this.show = false;
-    return false;
   }
   
   ngOnInit(): void {
