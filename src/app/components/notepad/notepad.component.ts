@@ -9,7 +9,7 @@ import { Note } from '../../interfaces/note';
 export class NotepadComponent implements OnInit {
   currentNote :Note;
   constructor() {
-    this.currentNote = {title: "", date: "", content: ""};
+    this.currentNote = {title: "", date: "", content: "", id: 0};
   }
 
 

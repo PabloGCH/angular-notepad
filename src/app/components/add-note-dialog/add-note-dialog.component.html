@@ -1,17 +1,19 @@
 <div class="modal" [class.show-modal] = "returnShow()" #modal>
+    <div (click)="close(title, content)" class ="modal-background"></div>
     <div class ="modal-body">
         <form>
             <fieldset>
                 <label for="title">Title: </label>
                 <input id="title" type="text" #title>
-                <label for="content">Content: </label>
-                <input id="content" type="text" #content>
             </fieldset>
             <fieldset>
-                <button (click)="close(title, content)">Cancel</button>
-                <button (click)="closeAdd(title, content)">Add</button>
+                <label for="content">Content: </label>
+                <textarea id="content" #content></textarea>
+            </fieldset>
+            <fieldset>
+                <button class="button" (click)="close(title, content)">Cancel</button>
+                <button class="button" (click)="closeAdd(title, content)">Add</button>
             </fieldset>
         </form>
     </div>
-    <div (click)="close(title, content)" class ="modal-background"></div>
 </div>

@@ -7,7 +7,7 @@ import {Note} from '../../interfaces/note'
   styleUrls: ['./text-renderer.component.css']
 })
 export class TextRendererComponent implements OnInit {
-  @Input() noteToRender:Note = {title: "", date: "", content: ""};
+  @Input() noteToRender:Note = {title: "", date: "", content: "", id: 0};
   constructor() {}
 
   ngOnInit(): void {

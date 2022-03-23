@@ -21,8 +21,8 @@ export class SidebarComponent implements OnInit {
   year  :string = "...";
   notes: Note[] = [];
   searchBarValue :string = "";
-  numberOfNotes :number= 0;
-  selectedNote !:number;
+  numberOfNotes :number = 0;
+  selectedNote :number = -1;
 
 
   constructor() {
@@ -37,11 +37,11 @@ export class SidebarComponent implements OnInit {
     }
 
     //Datos para prueba
-    this.notes.push({title: 'primera nota',date: '2022/2/13', content: 'esta es la primera nota'});
+    this.notes.push({title: 'primera nota',date: '2022/2/13', content: 'esta es la primera nota', id: 0});
     this.numberOfNotes++;
-    this.notes.push({title: 'segunda nota',date: '2023/4/14', content: 'esta es la segunda nota'});
+    this.notes.push({title: 'segunda nota',date: '2023/4/14', content: 'esta es la segunda nota', id: 1});
     this.numberOfNotes++;
-    this.notes.push({title: 'tercera nota',date: '2023/6/2018', content: 'esta es la tercera nota'});
+    this.notes.push({title: 'tercera nota',date: '2023/6/2018', content: 'esta es la tercera nota', id: 2});
     this.numberOfNotes++;
 
     
@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
     var month = this.month;
     var year = this.year;
 
-    return array.slice().reverse().filter(function(item) {
+    return array.slice().filter(function(item) {
       return ((day=="..." || item.date.search(`/${day}`) != -1) && (month=="..." || item.date.search(`/${month}/`) != -1) && (year=="..." || item.date.search(`${year}/`) != -1));
     })
   }
@@ -86,21 +86,35 @@ export class SidebarComponent implements OnInit {
   }
 
   rmNote() {
-    this.notes.splice(this.selectedNote, 1);
-    this.numberOfNotes--;
+    if (this.selectedNote != -1){
+      this.notes.splice(this.selectedNote, 1);
+      this.numberOfNotes--;
+      this.selectedNote = -1;
+      this.reWriteNoteId();
+    }
+  }
+
+  reWriteNoteId() {
+    var i = 0;
+    this.notes.forEach(element => {
+      element.id = i;
+      i++;
+    });
   }
 
   //PRE: Recibe una nota
   //POS: Agrega la nota al array
   addNote(data :Note){
     var newNote = data;
+    newNote.id = this.numberOfNotes
     this.notes.push(newNote);
     this.numberOfNotes++;
   }
 
-  returnNote(num : number) :void{
-    this.selectedNote = num;
-    this.currentNote.emit(this.notes[num]);
+  returnNote(note :Note) :void{
+    console.log(note);
+    this.selectedNote = note.id;
+    this.currentNote.emit(note);
   }
 
 

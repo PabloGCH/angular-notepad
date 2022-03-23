@@ -29,7 +29,7 @@
 
     <div id="note-box">
         <select multiple id="note-list">
-            <option *ngFor="let item of filteredNoteArray(); index as i" (click)="returnNote(numberOfNotes - 1 - i)">{{item.date}} {{item.title}}</option>
+            <option *ngFor="let item of filteredNoteArray(); index as i" (click)="returnNote(item)">{{item.date}} {{item.title}}</option>
         </select>
     </div>
 </div>
