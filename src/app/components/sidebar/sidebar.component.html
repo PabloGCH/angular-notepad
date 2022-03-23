@@ -18,10 +18,13 @@
             <option *ngFor="let i of years" value="{{i}}">{{i}}</option>
         </select>
     </div>
-    <input id="search-bar" #searchBarInput (input)="setSearchBarValue(searchBarInput)">
+    <div id="search-box">
+        <img id="search-bar-icon" src="../../../assets/search.png" alt="search-icon">
+        <input id="search-bar" #searchBarInput (input)="setSearchBarValue(searchBarInput)">
+    </div>
     <div id="buttons-box">
-        <button (click)="addDialog.open()">+</button>
-        <button (click)="rmDialog.open()">-</button>
+        <button class="sidebar-button" (click)="addDialog.open()"><img src="../../../assets/add.png" alt="add-icon"></button>
+        <button class="sidebar-button" (click)="rmDialog.open()"><img src="../../../assets/rm.png" alt="remove-icon"></button>
     </div>
 
     <div id="note-box">
