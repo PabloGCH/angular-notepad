@@ -32,19 +32,18 @@ export class SidebarComponent implements OnInit {
     for(let i = 1; i <= 12; i++){
       this.months.push(i)
     }
-    for(let i = 2022; i <= 2023; i++){
+    for(let i = 2021; i <= 2023; i++){
       this.years.push(i)
     }
 
-    //Datos para prueba
-    this.notes.push({title: 'primera nota',date: '2022/2/13', content: 'esta es la primera nota', id: 0});
-    this.numberOfNotes++;
-    this.notes.push({title: 'segunda nota',date: '2023/4/14', content: 'esta es la segunda nota', id: 1});
-    this.numberOfNotes++;
-    this.notes.push({title: 'tercera nota',date: '2023/6/2018', content: 'esta es la tercera nota', id: 2});
-    this.numberOfNotes++;
-
-    
+    for(var i=0; i <= 10; i++) {
+      this.notes.push({title: `Nota N°${i}`,date: `2021/${i + 1}/${i * 2 + 3}-time`, content: `Esta es una nota`, id: i});
+      this.numberOfNotes++;
+    }
+    for(var i=0; i <= 10; i++) {
+      this.notes.push({title: `Nota N°${i + 11}`,date: `2022/${i + 1}/${i * 2 + 3}-time`, content: `Esta es una nota`, id: i});
+      this.numberOfNotes++;
+    }
   }
 
 
@@ -56,7 +55,7 @@ export class SidebarComponent implements OnInit {
   filterBySearchTerm(array :Note[]) :Note[]{
     var parameter :string = this.searchBarValue;
     return array.slice().reverse().filter(function(item){
-      return (item.content.search(parameter) != -1 || item.date.search(parameter) != -1);
+      return (item.title.search(parameter) != -1 || item.date.search(parameter) != -1);
     });
   }
 
@@ -66,7 +65,7 @@ export class SidebarComponent implements OnInit {
     var year = this.year;
 
     return array.slice().filter(function(item) {
-      return ((day=="..." || item.date.search(`/${day}`) != -1) && (month=="..." || item.date.search(`/${month}/`) != -1) && (year=="..." || item.date.search(`${year}/`) != -1));
+      return ((day=="..." || item.date.search(`/${day}-`) != -1) && (month=="..." || item.date.search(`/${month}/`) != -1) && (year=="..." || item.date.search(`${year}/`) != -1));
     })
   }
 
@@ -117,8 +116,16 @@ export class SidebarComponent implements OnInit {
     this.currentNote.emit(note);
   }
 
-
-  
+  selectExpand(element :HTMLSelectElement){
+    element.removeAttribute("disabled")
+    element.size = 5;
+    element.classList.add("select-dropdown");
+  }
+  selectCollapsed(element :HTMLSelectElement){
+    element.removeAttribute("size");
+    element.blur();
+    element.classList.remove("select-dropdown");
+  }
 
   ngOnInit(): void {
       
