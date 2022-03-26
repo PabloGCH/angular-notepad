@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit {
       this.numberOfNotes++;
     }
     for(var i=0; i <= 10; i++) {
-      this.notes.push({title: `Nota N°${i + 11}`,date: `2022/${i + 1}/${i * 2 + 3}-time`, content: `Esta es una nota`, id: i});
+      this.notes.push({title: `Nota N°${i + 11}`,date: `2022/${i + 1}/${i * 2 + 3}-time`, content: `Esta es una nota`, id: i + 11});
       this.numberOfNotes++;
     }
   }
