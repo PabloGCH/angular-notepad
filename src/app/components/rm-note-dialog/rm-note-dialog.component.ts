@@ -10,17 +10,24 @@ export class RmNoteDialogComponent implements OnInit {
   @Output() returnRm = new EventEmitter<boolean>();
   show = false;
   constructor() {}
-
+  //PRE:
+  //POS: Devuelve variable show
   returnShow() {
     return this.show;
   }
+  //PRE:
+  //POS: Asigna true a la variable show
   open(){
     this.show = true;
   }
+  //PRE:
+  //POS: Asigna false a show, emite true a padre
   closeRm(){
     this.show = false;
     this.returnRm.emit(true);
   }
+  //PRE:
+  //POS: Asigna false a show
   close(){
     this.show = false;
   }

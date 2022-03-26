@@ -12,7 +12,8 @@ export class NotepadComponent implements OnInit {
     this.currentNote = {title: "", date: "", content: "", id: 0};
   }
 
-
+  //PRE: Recibe una nota de elemento hijo
+  //POS: Guarda la nota recibida en currentNote
   saveCurrentNote($event:Note){
     this.currentNote = $event;
   }
