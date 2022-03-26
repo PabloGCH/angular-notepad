@@ -46,12 +46,15 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-
+  //PRE:
+  //POS: Filtra el array de notas de acuerdo a searchBarValue y por las fecha.
   filteredNoteArray() {
     return this.filterByDate(this.filterBySearchTerm(this.notes));
   }
 
 
+  //PRE: Recibe un array de notas
+  //POS: Filtra segun el contenido de searchBarValue
   filterBySearchTerm(array :Note[]) :Note[]{
     var parameter :string = this.searchBarValue;
     return array.slice().reverse().filter(function(item){
@@ -59,6 +62,8 @@ export class SidebarComponent implements OnInit {
     });
   }
 
+  //PRE: Recibe un array de notas
+  //POS: Filtra segun el valor de las variables day, month y year
   filterByDate(array :Note[]) :Note[]{
     var day = this.day;
     var month = this.month;
@@ -69,21 +74,29 @@ export class SidebarComponent implements OnInit {
     })
   }
 
+  //PRE: Recibe un HTMLSelectElement que tiene como valor el dia
+  //POS: Asigna el valor a day
   setDayInput(dayInput :HTMLSelectElement){
     this.day = dayInput.value;
   }
+  //PRE: Recibe un HTMLSelectElement que tiene como valor el mes
+  //POS: Asigna el valor a month
   setMonthInput(monthInput :HTMLSelectElement){
     this.month = monthInput.value;
   }
+  //PRE: Recibe un HTMLSelectElement que tiene como valor el año
+  //POS: Asigna el valor a year
   setYearInput(yearInput :HTMLSelectElement){
     this.year = yearInput.value;
   }
-
-
+  //PRE: Recibe un HTMLInputElement
+  //POS: Asigna el valor del parametro a searchBarValue
   setSearchBarValue(searchBarInput :HTMLInputElement){
     this.searchBarValue = searchBarInput.value;
   }
 
+  //PRE;
+  //POS: Remueve la nota seleccionada (la que esta en el index determinado por selectedNote)
   rmNote() {
     if (this.selectedNote != -1){
       this.notes.splice(this.selectedNote, 1);
@@ -93,6 +106,8 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  //PRE: Se debe llamar cuando haya cambios en notes
+  //POS: Cambia el id de las notas para que sigan la logica del array modificado
   reWriteNoteId() {
     var i = 0;
     this.notes.forEach(element => {
@@ -110,17 +125,22 @@ export class SidebarComponent implements OnInit {
     this.numberOfNotes++;
   }
 
+  //PRE: Recibe una nota
+  //POS: Emite la nota al padre, Asigna el id de la nota a selectedNote
   returnNote(note :Note) :void{
-    console.log(note);
     this.selectedNote = note.id;
     this.currentNote.emit(note);
   }
 
+  //PRE: Recibe un HTMLSelectElement
+  //POS: Expande el menu del select
   selectExpand(element :HTMLSelectElement){
     element.removeAttribute("disabled")
     element.size = 5;
     element.classList.add("select-dropdown");
   }
+  //PRE: Recibe un HTMLSelectElement
+  //POS: Colapsa el menu del select
   selectCollapsed(element :HTMLSelectElement){
     element.removeAttribute("size");
     element.blur();
